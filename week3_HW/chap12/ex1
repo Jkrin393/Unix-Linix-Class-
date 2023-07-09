@@ -1,0 +1,11 @@
+
+1) supposed teh following declarations
+int a[] = {5,15,34,54,14,2,52,2};
+int *p = &a[1]; address of a[1], same as *p = &*<a>
+int *q = &a[5]; 
+
+a) What is the value of : *(p+3)? from a[1] we increment 3 memory locations to a[4] and dereference, which returns 14
+b) What is the valuie of : *(q-3)? from a[5] we decerement 3 memory locations to a[2] and dereference, which returns 32
+c) What is the value of q-p? the number of values between the two memory locations, in this instance, 4 would be returned
+d) is p<q true or false? p and q both evaulate to memory addresses.  Memory locations are assigned in increasing order so p<q evaluates to True
+e) is *p<*q true or false? *p=15, *q=2, therefore the statement is False

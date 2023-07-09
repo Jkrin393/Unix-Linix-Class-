@@ -1,0 +1,9 @@
+question 11.4, Understanding Unix, pg 381
+
+prompt:
+What if you ran a pizza delivery service instead of a time or directory -assistance program. Describe the sequence of messages passed between server and client for pizza-delivery service. Note that this protocol contains a loop to allow the clioent to add several items to the order
+
+Answer: the directory-assistance program only needs to send one request and receive one response after connection, leading to the three steps we wee in the code. step 1: create/get a socket, step 2:use socket to connect to server step 3: send response, read results, close
+
+If we want to enable a service such as pizza delivery, keeping in mind the running loop, the process will change slightly. On the client side, there is not too much different. The client will still open a socket, connect, send order, receive confirmation of order. The server side is where the protocol will see more significant changes. After the server accepts the connection from the client, it should enter an infinite loop. The point of the loop is to collect all the items on the customers order. I think a buffer would be a good tool to use here to ensure all items are processed. The server will continue to prompt the user for additional selections until the signal to submit order is entered. Once the signal is sent, a seperate process will need to read the buffer and create an order. Once that is done, the server will respond once more to the client with the order and delivery instructions, then the socket will be closed. The client side, upon receiving final message, will also close its socket, severing the connection to the server.
+

@@ -1,0 +1,14 @@
+Sockets are not files. We saw earlier that disk files and device files both support the standard file interface, but connections to disk files have one set of properties, and connections to device files have different properties. What special properties do sockets have? Hint: look at the setsockopt manual for details
+ 
+Unix Molay ex 11.4 pg 381
+
+Sockets have a handful of useful properties that make them useful and moldable to the needs of the client. Viewing the setsockopt manual, with help from GNU.org(https://www.gnu.org/software/libc/manual/html_node/Socket-Concepts.html), we can classify the properties into a few categories. On creation, there are a few things the user must specify to ensure the correct socket is created
+
+1) Communication type: the socket can be created with either SOCK_STREAM(TCP/IP) or SOCK_DGRAM(UDP) dependant on if we can tolerate data loss
+2) domain: The user can specify if the connection is for communication on same or differing hosts, as well as specify IPv4 or IPv6
+3) mode: The socket can be instructed to set up in a few modes. e.g.  Listen waits for incoming messages passive. Tthe buffer size can also be adjusted as needed
+4) type: a socket can be specified to be re-usable(the socket will re-use the known local addresses) or single use. We can also further specify the behavior by choosing timeout timings(SO_RCVITMEO, SO_SNDTIMEO) to control when sockets can send/receive data, as well as control how long a socket can own resources until its blocking call is revoked.
+
+
+
+

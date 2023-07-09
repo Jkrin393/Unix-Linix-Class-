@@ -1,0 +1,7 @@
+pg 281 8.10 questions
+
+1) Can you explain why the prgram sometimes misses as the number of problems get larger? is there a soltuion?
+	It seems that it misses  because wait() only waits for a process to finish and not a specific one. There is no check to ensure that all completed process signals have been handled. A solution could be to call a blocking wait() on a specific PID. This would be problematic at larger child numbers so the second alternative solution could be the use of a buffer, perhaps in the form of a queue, to handle signals from finished processes
+
+
+

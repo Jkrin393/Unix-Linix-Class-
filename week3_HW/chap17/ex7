@@ -1,0 +1,16 @@
+Exersize 7, pg 454
+
+This loop is supposed to delete nodes from a linked list but the logic is incorrect. Explain why its wrong and show how to fix it:
+
+for(p = first; p !=NULL; p = p->next)
+	free(p);
+
+This loop does not correctly assign the pointed to the next node before deleting the current node. After the first node, the link will be broken and there will be no way to access or free the remaining nodes. The list needs to be traveresed with an iterator of some kind. A while loop with a current node is effective. Code sample is below, assuming a Node struct with a variable for data and a pointer called next;
+
+Node* current = head; //assign iterator to head of linked lisst
+Node* temp;
+while(current->next !=NULL){
+	temp = current;
+	current = current->next;
+	free(temp);
+} 

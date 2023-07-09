@@ -1,0 +1,30 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+
+void main(){
+
+	struct{
+	    union{
+		char a, b;
+		int c;
+	    } d;
+	    int e[5];
+	}
+	f, *p = &f;   // f = instance of struct, p = pointer to struct
+
+	p->b = ' ';
+	p->e[5] = 10;
+	(*p).d.a = '*';
+	p->d->c = 20;
+}
+
+
+
+/*
+a) p->b = ' '; This is not a valid way to assign a value to char b. you need to access it through variable d, so it should be p->d.b
+b) p->e[3] = 10; This is legal, the arrow symbol linmks to the array 3, and defenrences address at index 3.
+c) (*p).d.a = '*'; This is legal, it is deferencing the pointer, p and then accessing the value at a. If the parenthesis were not around the variable p, the dots would take precedence and this would not be valid
+d) p->d->c = 20; This is not legal, d is not a pointer, so arrow notation will not work. The correct way to assign the value is .c
+*/
+

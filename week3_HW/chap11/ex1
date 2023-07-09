@@ -1,0 +1,10 @@
+if I is a variable, and p points to i, which of the following expressions are aliases for i?
+
+a) *p = Alias
+b) &p = Not Alias, will return address of p
+c) *&p = Not Alias, p is a pointer, this will return the address of the pointer 
+d) &*p = Not Alias, this will return the address if the value pointed to by p
+e) *i = Not Alias, i dont think a variable can be dereferenced in this way
+f) &i = Not Alias, this will return the address of i
+g) *&i = Alias, this is a dereference of the address of variable i
+h) &*i = Not Alias, this is an error and wont compile
